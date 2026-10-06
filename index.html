@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bay Street Barbers · Tampa</title>
+<meta name="description" content="Classic cuts, fades and beard work in downtown Tampa. Book online in 30 seconds.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #15181d;
+    --paper: #f6f2ea;
+    --muted: #6b6760;
+    --accent: #c2410c;
+    --line: #ddd5c7;
+    --card: #fffdf8;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.6 Inter, system-ui, sans-serif; }
+  a { color: inherit; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+
+  header { position: sticky; top: 0; z-index: 10; background: rgba(246,242,234,.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .logo { font-family: Anton, sans-serif; font-size: 22px; letter-spacing: .04em; text-decoration: none; }
+  .logo span { color: var(--accent); }
+  .nav ul { display: flex; gap: 28px; list-style: none; margin: 0; padding: 0; font-weight: 500; font-size: 15px; }
+  .nav ul a { text-decoration: none; }
+  .nav ul a:hover { color: var(--accent); }
+  .btn { display: inline-block; background: var(--ink); color: #fff; text-decoration: none; padding: 12px 22px; border-radius: 999px; font-weight: 600; font-size: 15px; transition: background .15s; }
+  .btn:hover { background: var(--accent); }
+  .btn.ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--ink); }
+  .btn.ghost:hover { background: var(--ink); color: #fff; }
+
+  .hero { padding-top: 88px; padding-bottom: 72px; display: grid; grid-template-columns: 1.2fr .8fr; gap: 48px; align-items: center; }
+  .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+  h1 { font-family: Anton, sans-serif; font-weight: 400; font-size: clamp(48px, 8vw, 96px); line-height: .95; margin: 14px 0 22px; letter-spacing: .01em; }
+  .lead { font-size: 19px; color: var(--muted); max-width: 520px; margin: 0 0 32px; }
+  .cta { display: flex; gap: 12px; flex-wrap: wrap; }
+  .hero-card { background: var(--ink); color: #f6f2ea; border-radius: 20px; padding: 32px; position: relative; overflow: hidden; }
+  .hero-card::after { content: ""; position: absolute; right: -70px; bottom: -70px; width: 140px; height: 140px; border-radius: 50%;
+    background: repeating-linear-gradient(135deg, var(--accent) 0 14px, #f6f2ea 14px 28px, #1d4ed8 28px 42px, #f6f2ea 42px 56px); opacity: .9; }
+  .hero-card h3 { margin: 0 0 18px; font-size: 14px; letter-spacing: .12em; text-transform: uppercase; color: #b9b2a6; }
+  .hours { list-style: none; margin: 0; padding: 0; }
+  .hours li { display: flex; justify-content: space-between; padding: 9px 0; border-bottom: 1px solid #2c3038; font-size: 15px; }
+  .hours li:last-child { border: 0; }
+  .open-now { margin-top: 18px; font-size: 14px; color: #8fd19e; }
+  .open-now.closed { color: #f2a28b; }
+
+  section { padding: 72px 0; }
+  .section-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 36px; flex-wrap: wrap; }
+  h2 { font-family: Anton, sans-serif; font-weight: 400; font-size: clamp(34px, 5vw, 52px); margin: 0; line-height: 1; }
+  .section-head p { color: var(--muted); max-width: 380px; margin: 0; }
+
+  .services { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 48px; }
+  .svc { display: grid; grid-template-columns: 1fr auto; gap: 4px 16px; padding: 22px 0; border-top: 1px solid var(--line); }
+  .svc h3 { margin: 0; font-size: 19px; font-weight: 600; }
+  .svc .price { font-family: Anton, sans-serif; font-size: 24px; }
+  .svc p { margin: 0; color: var(--muted); font-size: 15px; grid-column: 1 / -1; }
+  .svc .time { white-space: nowrap; font-size: 13px; color: var(--accent); font-weight: 600; }
+
+  .why { background: var(--ink); color: #f6f2ea; border-radius: 28px; padding: 64px 48px; }
+  .why h2 { color: #fff; }
+  .why .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 40px; }
+  .why .num { font-family: Anton, sans-serif; font-size: 44px; color: var(--accent); line-height: 1; }
+  .why h3 { margin: 12px 0 6px; font-size: 18px; }
+  .why p { margin: 0; color: #b9b2a6; font-size: 15px; }
+
+  .book { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .panel { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 32px; }
+  .panel h3 { margin: 0 0 8px; font-size: 22px; }
+  .panel p { color: var(--muted); margin: 0 0 20px; }
+  form { display: grid; gap: 12px; }
+  label { font-size: 13px; font-weight: 600; }
+  input, select { width: 100%; padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; font: inherit; background: #fff; }
+  input:focus, select:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: transparent; }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .note { font-size: 13px; color: var(--muted); }
+  .done { display: none; padding: 14px; border-radius: 10px; background: #e7f4ea; color: #1e5b2f; font-weight: 500; }
+  address { font-style: normal; line-height: 1.8; }
+  .map { margin-top: 18px; height: 180px; border-radius: 14px; border: 1px solid var(--line);
+    background: linear-gradient(90deg, transparent 49%, var(--line) 49% 51%, transparent 51%) 0 0 / 60px 60px,
+                linear-gradient(0deg, transparent 49%, var(--line) 49% 51%, transparent 51%) 0 0 / 60px 60px, #efe9dd;
+    display: grid; place-items: center; }
+  .pin { width: 18px; height: 18px; border-radius: 50% 50% 50% 0; background: var(--accent); transform: rotate(-45deg); box-shadow: 0 0 0 6px rgba(194,65,12,.18); }
+
+  footer { padding: 36px 0 48px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); }
+  footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+  @media (max-width: 860px) {
+    .nav ul { display: none; }
+    .hero, .book, .services, .why .grid { grid-template-columns: 1fr; }
+    .hero { padding-top: 40px; padding-bottom: 40px; gap: 32px; }
+    .why { padding: 44px 24px; border-radius: 20px; }
+    section { padding: 52px 0; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#">BAY STREET <span>BARBERS</span></a>
+    <ul>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#why">Why us</a></li>
+      <li><a href="#book">Visit</a></li>
+    </ul>
+    <a class="btn" href="#book">Book now</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <div>
+      <div class="eyebrow">Downtown Tampa · Since 2014</div>
+      <h1>Sharp cuts.<br>No waiting.</h1>
+      <p class="lead">Classic cuts, skin fades and hot-towel shaves from barbers who take their time. Book a slot in 30 seconds and walk right into the chair.</p>
+      <div class="cta">
+        <a class="btn" href="#book">Book an appointment</a>
+        <a class="btn ghost" href="#services">See prices</a>
+      </div>
+    </div>
+    <aside class="hero-card" aria-label="Opening hours">
+      <h3>Opening hours</h3>
+      <ul class="hours">
+        <li><span>Monday – Friday</span><span>9 am – 7 pm</span></li>
+        <li><span>Saturday</span><span>9 am – 7 pm</span></li>
+        <li><span>Sunday</span><span>Closed</span></li>
+      </ul>
+      <div class="open-now" id="openNow"></div>
+    </aside>
+  </div>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Services &amp; prices</h2>
+        <p>Every service includes a consultation, a hot towel and a style finish. Tips welcome, never expected.</p>
+      </div>
+      <div class="services">
+        <div class="svc"><h3>Haircut</h3><span class="price">$35</span><p>Scissor or clipper cut, washed and styled. <span class="time">45 min</span></p></div>
+        <div class="svc"><h3>Skin fade</h3><span class="price">$40</span><p>Detailed fade blended down to the skin. <span class="time">50 min</span></p></div>
+        <div class="svc"><h3>Beard trim</h3><span class="price">$20</span><p>Shape-up, line-up and beard oil. <span class="time">30 min</span></p></div>
+        <div class="svc"><h3>Haircut + beard</h3><span class="price">$50</span><p>The full reset. Our most booked service. <span class="time">75 min</span></p></div>
+        <div class="svc"><h3>Hot-towel shave</h3><span class="price">$35</span><p>Straight razor, two hot towels, cold finish. <span class="time">40 min</span></p></div>
+        <div class="svc"><h3>Kids' cut (under 12)</h3><span class="price">$25</span><p>Patient barbers, no tears policy. <span class="time">30 min</span></p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="why">
+    <div class="wrap">
+      <div class="why">
+        <h2>Why people come back</h2>
+        <div class="grid">
+          <div><div class="num">01</div><h3>On time, every time</h3><p>Booked slots mean you don't sit around. If we run late, you get a text.</p></div>
+          <div><div class="num">02</div><h3>Same barber</h3><p>Book the barber who knows your cut. Your preferences are saved for next time.</p></div>
+          <div><div class="num">03</div><h3>Easy reminders</h3><p>A reminder the day before, and you can cancel or move it from your phone.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="book">
+    <div class="wrap book">
+      <div class="panel">
+        <h3>Book a visit</h3>
+        <p>Pick a service and a time. We'll text you to confirm.</p>
+        <form id="bookForm" novalidate>
+          <div>
+            <label for="svc">Service</label>
+            <select id="svc" required>
+              <option>Haircut · $35</option><option>Skin fade · $40</option><option>Beard trim · $20</option>
+              <option>Haircut + beard · $50</option><option>Hot-towel shave · $35</option><option>Kids' cut · $25</option>
+            </select>
+          </div>
+          <div class="row">
+            <div><label for="day">Day</label><input id="day" type="date" required></div>
+            <div><label for="time">Time</label>
+              <select id="time" required></select>
+            </div>
+          </div>
+          <div class="row">
+            <div><label for="name">Name</label><input id="name" autocomplete="name" required></div>
+            <div><label for="phone">Phone</label><input id="phone" type="tel" autocomplete="tel" placeholder="(813) 555-0123" required></div>
+          </div>
+          <button class="btn" type="submit">Request booking</button>
+          <div class="done" id="done" role="status"></div>
+          <span class="note">Prefer chat? Book through our Telegram assistant.</span>
+        </form>
+      </div>
+      <div class="panel">
+        <h3>Find us</h3>
+        <address>
+          212 Bay Street (demo address)<br>
+          Tampa, FL 33602<br>
+          <a href="tel:+18135550123">(813) 555-0123</a>
+        </address>
+        <div class="map" role="img" aria-label="Map placeholder"><div class="pin"></div></div>
+        <p class="note" style="margin-top:14px">Free parking behind the building after 5 pm.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© Bay Street Barbers</span>
+    <span>Portfolio demo · fictional business</span>
+  </div>
+</footer>
+
+<script>
+  // Open/closed badge based on Tampa local time
+  (function () {
+    const el = document.getElementById("openNow");
+    const now = new Date(new Date().toLocaleString("en-US", { timeZone: "America/New_York" }));
+    const open = now.getDay() !== 0 && now.getHours() >= 9 && now.getHours() < 19;
+    el.textContent = open ? "● Open now" : "● Closed now · book for tomorrow";
+    if (!open) el.classList.add("closed");
+  })();
+
+  // Booking form: future dates only, Sundays blocked, half-hour slots
+  const day = document.getElementById("day");
+  const time = document.getElementById("time");
+  const tomorrow = new Date(Date.now() + 864e5);
+  day.min = tomorrow.toISOString().slice(0, 10);
+  day.value = day.min;
+
+  function fillTimes() {
+    time.innerHTML = "";
+    const d = new Date(day.value + "T12:00");
+    if (d.getDay() === 0) { time.add(new Option("Closed on Sundays", "")); return; }
+    for (let h = 9; h < 19; h++) for (const m of [0, 30]) {
+      const label = `${(h % 12) || 12}:${m ? "30" : "00"} ${h < 12 ? "am" : "pm"}`;
+      time.add(new Option(label, label));
+    }
+  }
+  day.addEventListener("change", fillTimes);
+  fillTimes();
+
+  document.getElementById("bookForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = document.getElementById("name").value.trim();
+    const phoneOk = document.getElementById("phone").value.replace(/\D/g, "").length >= 10;
+    const done = document.getElementById("done");
+    if (!name || !phoneOk || !time.value) {
+      done.style.display = "block";
+      done.style.background = "#fbe9e4"; done.style.color = "#8a2c12";
+      done.textContent = "Please add your name, a 10-digit phone number and an open time.";
+      return;
+    }
+    done.style.display = "block";
+    done.style.background = ""; done.style.color = "";
+    done.textContent = `Thanks, ${name}! Request sent for ${document.getElementById("svc").value.split(" ·")[0]} on ${day.value} at ${time.value}. We'll text you to confirm.`;
+    form.reset(); day.value = day.min; fillTimes();
+  });
+</script>
+</body>
+</html>
